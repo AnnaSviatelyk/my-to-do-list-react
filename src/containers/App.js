@@ -10,7 +10,7 @@ import TaskContext from '../context/task-context'
 
 class App extends Component {
   state = {
-    tasks: JSON.parse(localStorage.getItem('tasks')) || [],
+    tasks: JSON.parse(localStorage.getItem('myTasks')) || [],
     isShownAddTaskInput: false,
     addInputValue: '',
 
@@ -49,7 +49,7 @@ class App extends Component {
         addInputValue: ''
       })
 
-      localStorage.setItem('tasks', JSON.stringify(tasks))
+      localStorage.setItem('myTasks', JSON.stringify(tasks))
     }
   }
 
@@ -61,7 +61,7 @@ class App extends Component {
       tasks: updatedTasks
     })
 
-    localStorage.setItem('tasks', JSON.stringify(updatedTasks))
+    localStorage.setItem('myTasks', JSON.stringify(updatedTasks))
   }
 
 
@@ -77,7 +77,7 @@ class App extends Component {
       tasks: tasks
     })
 
-    localStorage.setItem('tasks', JSON.stringify(tasks))
+    localStorage.setItem('myTasks', JSON.stringify(tasks))
   }
 
   render() {
