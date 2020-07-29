@@ -8,7 +8,8 @@ import {
 } from 'react-transition-group';
 
 
-const tasks = ({ tasks }) => {
+
+const Tasks = ({ tasks }) => {
 
     return (
         <TransitionGroup className="tasks-container">
@@ -31,4 +32,4 @@ const tasks = ({ tasks }) => {
 
 }
 
-export default tasks
+export default Tasks

@@ -1,0 +1,59 @@
+.authBtn {
+    margin-right: 12px;
+    width: 101px;
+    height: 36px;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #074b84;
+
+    font-family: "Kalam", monospace;
+    font-size: 14px;
+    color: #ffffff;
+
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+        opacity: 0.9;
+    }
+
+    &--wide {
+        margin: 10px 0 21px 50%;
+        transform: translateX(-50%);
+
+        width: 400px;
+        box-sizing: border-box;
+
+        &:disabled {
+            background-color: #cfcfcf;
+            color: #ffffff;
+            cursor: not-allowed;
+        }
+    }
+
+    &--with-border {
+        background-color: #ffffff;
+        border: 1px solid #074b84;
+        box-sizing: border-box;
+
+        color: #074b84;
+    }
+
+    &--text {
+        margin-left: 50%;
+        transform: translateX(-50%);
+        background-color: transparent;
+        border: none;
+        color: #074b84;
+
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+}

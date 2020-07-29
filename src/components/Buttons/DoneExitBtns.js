@@ -1,5 +1,5 @@
 import React from 'react'
-import './Tasks/Task.scss'
+import '../Tasks/Task.scss'
 
 
 const DoneExitBtns = ({ update, cancel }) => {

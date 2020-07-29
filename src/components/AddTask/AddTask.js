@@ -1,10 +1,8 @@
 import React from 'react'
 import './AddTask.scss'
 
-
-const addTask = ({ value, cancelClick, onChange, onAdd }) => {
+const AddTask = ({ value, cancelClick, onChange, onAdd }) => {
     const keyPressHandler = (event) => {
-
         if (event.keyCode === 13) {
             event.preventDefault();
             if (event.target.value !== '') {
@@ -13,7 +11,6 @@ const addTask = ({ value, cancelClick, onChange, onAdd }) => {
         }
     }
 
-    const disabledClass = value.length ? '' : ' add-new-item__btn-add-task--disabled'
     return (
         <div className="add-new-item">
             <div className="add-new-item__description-field">
@@ -27,11 +24,11 @@ const addTask = ({ value, cancelClick, onChange, onAdd }) => {
             </div>
 
             <div className="add-new-item__buttons">
-                <button className={`add-new-item__btn-add-task ${disabledClass}`} onClick={() => onAdd(value.length)}> Add task</button>
+                <button className={`add-new-item__btn-add-task ${value.length ? '' : ' add-new-item__btn-add-task--disabled'}`} onClick={() => onAdd(value.length)}> Add task</button>
                 <button className="add-new-item__btn-cancel" onClick={cancelClick}>Cancel</button>
             </div>
         </div>
     )
 }
 
-export default addTask
+export default AddTask

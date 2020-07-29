@@ -6,11 +6,13 @@
     cursor: pointer;
 
     &__plus-icon {
+        margin-right: 8px;
         height: 24px;
         width: 24px;
+
         background-image: url(../../assets/plus.svg);
-        margin-right: 8px;
         vertical-align: middle;
+
         transition: all 0.3s;
     }
 
@@ -19,9 +21,11 @@
     }
 
     &__label {
+        margin-top: 3px;
+
         font-family: "Kalam", monospace;
         font-size: 16px;
-        margin-top: 3px;
+
         transition: all 0.3s;
     }
 

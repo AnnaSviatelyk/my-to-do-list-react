@@ -1,20 +1,17 @@
-import React, { useState, useEffect, useRef, useContext } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
+import { connect } from 'react-redux'
 import './Task.scss'
 import Line from '../../sharedComponent/Line/Line'
-import DoneExitBtns from '../DoneExitBtns'
-import EditBtnInput from '../EditBtnInput'
-import TaskContext from '../../context/task-context'
+import DoneExitBtns from '../Buttons/DoneExitBtns'
+import EditBtnInput from '../Buttons/EditBtnInput'
+import * as actions from '../../store/actions/index'
 
-const Task = ({ data }) => {
-    const taskContext = useContext(TaskContext)
 
+const Task = ({ data, onFinishOrDeleteTask, onTaskUpdate, postTasks, tasks, token, userId }) => {
     const [isEdit, setIsEdit] = useState(false)
     const [spanHeight, setSpanHeight] = useState(37)
     const [initialValue, setNewValue] = useState(data.description)
-
-
     const spanRef = useRef(null)
-
 
     const documentClickHandler = (event) => {
         const ignoringElements = ['task__edit-input-text', 'task__btn-done', 'task__btn-exit-edit']
@@ -22,9 +19,7 @@ const Task = ({ data }) => {
         if (!ignoringElements.includes(className)) { closeEditTextArea() }
     }
 
-    const openEditTextArea = () => {
-        setIsEdit(true)
-    }
+    const openEditTextArea = () => { setIsEdit(true) }
 
     useEffect(() => {
         const spanHeight = spanRef.current.offsetHeight
@@ -36,12 +31,16 @@ const Task = ({ data }) => {
             document.addEventListener('click', documentClickHandler)
         }
         return () => document.removeEventListener('click', documentClickHandler)
-    }, [isEdit])
+        // eslint-disable-next-line
+    }, [isEdit, initialValue])
 
 
     const closeEditTextArea = () => {
-        setIsEdit(false)
-        taskContext.onUpdate(initialValue, data.id)
+        if (initialValue.length > 0) {
+            setIsEdit(false)
+            onTaskUpdate(initialValue, data.id)
+            postTasks(token, tasks, userId)
+        }
     }
 
     const updateValue = (event) => {
@@ -49,15 +48,17 @@ const Task = ({ data }) => {
         setNewValue(value)
     }
 
-
     const cancelValueUpdate = () => {
         setIsEdit(false)
         setNewValue(data.description)
     }
 
+    const finishOrDeleteTask = () => {
+        onFinishOrDeleteTask(data.id)
+        postTasks(token, tasks, userId)
+    }
 
     return (
-
         <div className="task">
             <div className="task__content-wrapper">
                 <div className="task__description">
@@ -69,7 +70,7 @@ const Task = ({ data }) => {
                                     xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100"
                                     style={{ enableBackground: "new 0 0 100 100" }} xmlSpace="preserve">
                                     <polyline className="task__checkbox_line" points="3.5,45.5 40.5,82.5 95.7,15.3 "
-                                        strokeLinecap="round" onAnimationEnd={() => taskContext.finishedOrDeletedClickHandler(data.id)} /></svg>
+                                        strokeLinecap="round" onAnimationEnd={finishOrDeleteTask} /></svg>
                             </label>
 
                             <span className="task__name" ref={spanRef}>{initialValue}</span>
@@ -81,14 +82,29 @@ const Task = ({ data }) => {
                     :
                     (<div className="task__btns">
                         <i className="task__btn-edit" onClick={openEditTextArea}></i>
-                        <i className="task__btn-delete" onClick={() => taskContext.finishedOrDeletedClickHandler(data.id)}></i>
+                        <i className="task__btn-delete" onClick={finishOrDeleteTask}></i>
                     </div>)
                 }
             </div>
             <Line className='line__in-task' />
         </div >
     )
-
 }
 
-export default Task
+const mapStateToProps = state => {
+    return {
+        tasks: state.todo.tasks,
+        token: state.auth.token,
+        userId: state.auth.userId
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onFinishOrDeleteTask: (id) => dispatch(actions.finishOrDeleteTask(id)),
+        onTaskUpdate: (description, id) => dispatch(actions.updateTask(description, id)),
+        postTasks: (token, tasks) => dispatch(actions.postTasks(token, tasks))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Task)

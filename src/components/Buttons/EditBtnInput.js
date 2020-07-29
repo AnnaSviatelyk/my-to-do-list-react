@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react'
-import './Tasks/Task.scss'
+import '../Tasks/Task.scss'
+
 const maxTextAreaHeight = 100
 const spanHeightWithOneLine = 37
 
@@ -11,7 +12,6 @@ const InputAndBtns = ({ value, spanHeight, change, closeTextArea }) => {
         let nextHeight = Math.min(maxTextAreaHeight, spanHeight)
         const textAreaPaddingTop = parseFloat(window.getComputedStyle(textAreaRef.current, null).getPropertyValue('padding-top'))
         textAreaRef.current.style.height = nextHeight + (2 * textAreaPaddingTop) + 'px'
-        console.log(textAreaRef.current.scrollHeight)
 
         if (value) {
             textAreaRef.current.rows = 1
@@ -27,14 +27,21 @@ const InputAndBtns = ({ value, spanHeight, change, closeTextArea }) => {
     const keyPressHandler = (event) => {
         if (event.keyCode === 13) {
             event.preventDefault();
-            if (event.target.value !== '') {
+            if (event.target.value.length > 0) {
                 closeTextArea()
             }
         }
     }
 
     return (
-        <textarea className={`task__edit-input-text ${className}`} type="text" autoFocus ref={textAreaRef} onChange={change} onKeyDown={keyPressHandler} value={value} />
+        <textarea
+            className={`task__edit-input-text ${className}`}
+            type="text"
+            autoFocus
+            ref={textAreaRef}
+            onChange={change}
+            onKeyDown={keyPressHandler}
+            value={value} />
     )
 
 }
