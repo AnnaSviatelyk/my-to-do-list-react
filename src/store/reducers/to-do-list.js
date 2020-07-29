@@ -1,32 +1,37 @@
 import * as actionTypes from '../actions/actionTypes'
 import { updateObj } from '../utility'
 
-
 const initialState = {
     tasks: [],
     error: null,
     data: null
 }
 
-const addTask = (state, action) => {
+//FETCH
+const fetchTasksSuccess = (state, action) => {
+    return updateObj(state, { tasks: action.tasks, error: null, loading: false })
+}
+
+const fetchTasksFail = (state, action) => {
+    return updateObj(state, { error: action.error, loading: false })
+}
+
+
+//POST
+const postTasksFail = (state, action) => {
+    return updateObj(state, { error: action.error })
+}
+
+const postTasksSuccess = (state, action) => {
     let updatedTasks = [...state.tasks]
-
     updatedTasks.push({
-        description: action.description,
-        id: action.id
+        ...action.task
     })
-
-    return updateObj(state, { tasks: updatedTasks })
+    return updateObj(state, { tasks: updatedTasks, error: null })
 }
 
-
-const finishOrDeleteTask = (state, action) => {
-    const updatedTasks = state.tasks.filter((cur => cur.id !== action.id))
-    return updateObj(state, { tasks: updatedTasks })
-}
-
-
-const updateTask = (state, action) => {
+//PUT
+const putTaskSuccess = (state, action) => {
     const updatedTasks = [...state.tasks]
     updatedTasks.forEach(cur => {
         if (cur.id === action.id) {
@@ -37,35 +42,35 @@ const updateTask = (state, action) => {
     return updateObj(state, { tasks: updatedTasks })
 }
 
-
-const postTasksFail = (state, action) => {
+const putTaskFail = (state, action) => {
     return updateObj(state, { error: action.error })
 }
 
-const postTasksSuccess = (state, action) => {
-    return updateObj(state, { data: action.data, error: null })
+
+//DELETE
+const deleteOrFinishTaskSuccess = (state, action) => {
+    const updatedTasks = state.tasks.filter((cur => cur.id !== action.id))
+    return updateObj(state, { tasks: updatedTasks })
 }
 
-
-const fetchTasksSuccess = (state, action) => {
-    return updateObj(state, { tasks: action.tasks, error: null })
-}
-
-const fetchTasksFail = (state, action) => {
+const deleteOrFinishTaskFail = (state, action) => {
     return updateObj(state, { error: action.error })
 }
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case actionTypes.ADD_TASK: return addTask(state, action)
-        case actionTypes.FINISH_OR_DELETE_TASK: return finishOrDeleteTask(state, action)
-        case actionTypes.UPDATE_TASK: return updateTask(state, action)
-        case actionTypes.POST_TASKS_SUCCESS: return postTasksSuccess(state, action)
-        case actionTypes.POST_TASKS_FAIL: return postTasksFail(state, action)
         case actionTypes.FETCH_TASKS_SUCCESS: return fetchTasksSuccess(state, action)
         case actionTypes.FETCH_TASKS_FAIL: return fetchTasksFail(state, action)
-        default:
-            return state
 
+        case actionTypes.POST_TASKS_SUCCESS: return postTasksSuccess(state, action)
+        case actionTypes.POST_TASKS_FAIL: return postTasksFail(state, action)
+
+        case actionTypes.PUT_TASK_SUCCESS: return putTaskSuccess(state, action)
+        case actionTypes.PUT_TASK_FAIL: return putTaskFail(state, action)
+
+        case actionTypes.DELETE_OR_FINISH_TASK_SUCCESS: return deleteOrFinishTaskSuccess(state, action)
+        case actionTypes.DELETE_OR_FINISH_TASK_FAIL: return deleteOrFinishTaskFail(state, action)
+        default: return state
     }
 
 }

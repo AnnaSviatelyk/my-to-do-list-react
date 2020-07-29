@@ -3,10 +3,10 @@ import './Main.scss'
 import { connect } from 'react-redux'
 import Logo from '../../components/Logo/Logo'
 import AuthBtns from '../../components/Buttons/AuthBtns/AuthBtns'
-import Modal from '../../components/UI/Modal/Modal'
+import Modal from '../../sharedComponent/Modal/Modal'
 import Auth from '../Auth/Auth'
 import * as actions from '../../store/actions/index'
-import Spinner from '../../components/UI/Spinner/Spinner'
+import Spinner from '../../sharedComponent/Spinner/Spinner'
 
 
 

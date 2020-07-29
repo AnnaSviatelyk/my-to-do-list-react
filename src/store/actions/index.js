@@ -7,9 +7,8 @@ export {
 } from './auth'
 
 export {
-    addTask,
-    finishOrDeleteTask,
-    updateTask,
-    postTasks,
-    fetchTasks
+    postTask,
+    fetchTasks,
+    putTask,
+    deleteTask
 } from './to-do-list'

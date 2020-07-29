@@ -7,7 +7,6 @@ import AddTaskBtn from '../../components/Buttons/addNewTaskButton'
 import Tasks from '../../components/Tasks/Tasks'
 import AddTask from '../../components/AddTask/AddTask'
 import * as actions from '../../store/actions/index'
-import { makeid } from '../../helpers/helpers';
 
 
 class ToDoList extends Component {
@@ -40,12 +39,10 @@ class ToDoList extends Component {
         if (length > 0) {
             const newTask = {
                 description: this.state.addInputValue,
-                id: makeid(),
                 userId: this.props.userId
             }
 
-            this.props.onAddTask(newTask.description, newTask.id)
-            this.props.postTasks(this.props.token, newTask, this.props.userId)
+            this.props.postTasks(this.props.token, newTask)
             this.setState({
                 isShownAddTaskInput: false,
                 addInputValue: ''
@@ -77,14 +74,13 @@ const mapStateToProps = state => {
     return {
         tasks: state.todo.tasks,
         token: state.auth.token,
-        userId: state.auth.userId
+        userId: state.auth.userId,
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        onAddTask: (description, id) => dispatch(actions.addTask(description, id)),
-        postTasks: (token, tasks, userId) => dispatch(actions.postTasks(token, tasks, userId)),
+        postTasks: (token, tasks, userId) => dispatch(actions.postTask(token, tasks, userId)),
         onFetchTasks: (token, userId) => dispatch(actions.fetchTasks(token, userId))
     }
 

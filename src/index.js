@@ -23,7 +23,7 @@ const store = createStore(rootReducer, composeEnhancers(
 
 const app = (
   <Provider store={store}>
-    <BrowserRouter>
+    <BrowserRouter basename='/my-to-do-list-react'>
       <App />
     </BrowserRouter>
   </Provider>

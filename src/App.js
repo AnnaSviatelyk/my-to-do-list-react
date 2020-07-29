@@ -16,7 +16,6 @@ class App extends Component {
     let routes = (<Switch>
       <Route path='/' component={Main} />
       {this.props.isAuth ? <Redirect from='/' to='/to-do-list' /> : <Redirect to='/' />}
-
     </Switch>
     )
 

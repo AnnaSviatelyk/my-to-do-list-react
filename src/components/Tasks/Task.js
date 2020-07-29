@@ -7,11 +7,18 @@ import EditBtnInput from '../Buttons/EditBtnInput'
 import * as actions from '../../store/actions/index'
 
 
-const Task = ({ data, onFinishOrDeleteTask, onTaskUpdate, postTasks, tasks, token, userId }) => {
+const Task = ({ data, onFinishOrDeleteTask, onPutTaskUpdate, token, userId }) => {
     const [isEdit, setIsEdit] = useState(false)
     const [spanHeight, setSpanHeight] = useState(37)
     const [initialValue, setNewValue] = useState(data.description)
     const spanRef = useRef(null)
+
+    const task = {
+        description: initialValue,
+        userId: userId
+    }
+
+    console.log(data)
 
     const documentClickHandler = (event) => {
         const ignoringElements = ['task__edit-input-text', 'task__btn-done', 'task__btn-exit-edit']
@@ -38,8 +45,7 @@ const Task = ({ data, onFinishOrDeleteTask, onTaskUpdate, postTasks, tasks, toke
     const closeEditTextArea = () => {
         if (initialValue.length > 0) {
             setIsEdit(false)
-            onTaskUpdate(initialValue, data.id)
-            postTasks(token, tasks, userId)
+            onPutTaskUpdate(token, task, data.id, userId)
         }
     }
 
@@ -54,8 +60,7 @@ const Task = ({ data, onFinishOrDeleteTask, onTaskUpdate, postTasks, tasks, toke
     }
 
     const finishOrDeleteTask = () => {
-        onFinishOrDeleteTask(data.id)
-        postTasks(token, tasks, userId)
+        onFinishOrDeleteTask(token, data.id, userId)
     }
 
     return (
@@ -101,9 +106,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onFinishOrDeleteTask: (id) => dispatch(actions.finishOrDeleteTask(id)),
-        onTaskUpdate: (description, id) => dispatch(actions.updateTask(description, id)),
-        postTasks: (token, tasks) => dispatch(actions.postTasks(token, tasks))
+        onFinishOrDeleteTask: (token, taskId, userId) => dispatch(actions.deleteTask(token, taskId, userId)),
+        onPutTaskUpdate: (token, task, taskId, userId) => dispatch(actions.putTask(token, task, taskId, userId))
     }
 }
 
