@@ -1,14 +1,15 @@
 .new-item {
+    margin-left: 172px;
+
     display: inline-flex;
     align-items: center;
 
-    margin-left: 172px;
     cursor: pointer;
 
     &__plus-icon {
-        margin-right: 8px;
         height: 24px;
         width: 24px;
+        margin-right: 8px;
 
         background-image: url(../../assets/plus.svg);
         vertical-align: middle;

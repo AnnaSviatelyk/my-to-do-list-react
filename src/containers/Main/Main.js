@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import './Main.scss'
 import { connect } from 'react-redux'
 import Logo from '../../components/Logo/Logo'
 import AuthBtns from '../../components/Buttons/AuthBtns/AuthBtns'
-import Modal from '../../sharedComponent/Modal/Modal'
+import Modal from '../../sharedComponents/Modal/Modal'
 import Auth from '../Auth/Auth'
 import * as actions from '../../store/actions/index'
-import Spinner from '../../sharedComponent/Spinner/Spinner'
+import Spinner from '../../sharedComponents/Spinner/Spinner'
 
 
 
@@ -51,8 +52,18 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onAuthBtnClick: (isSignUp, isFormShown) => dispatch(actions.authBtnClick(isSignUp, isFormShown)),
-        onBackdropClick: () => dispatch(actions.closeForm())
+        onBackdropClick: () => dispatch(actions.backDropClick())
     }
+}
+
+
+Main.propTypes = {
+    isSignUp: PropTypes.bool,
+    isFormShown: PropTypes.bool,
+    loading: PropTypes.bool,
+    token: PropTypes.string,
+    onAuthBtnClick: PropTypes.func,
+    onBackdropClick: PropTypes.func
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main)

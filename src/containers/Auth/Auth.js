@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import * as actions from '../../store/actions/index'
 import './Auth.scss'
@@ -11,7 +12,7 @@ class Auth extends Component {
             userName: {
                 elementConfig: {
                     type: 'input',
-                    placeholder: "User Name"
+                    placeholder: "Username"
                 },
                 value: '',
                 touched: false,
@@ -106,7 +107,7 @@ class Auth extends Component {
                         shouldValidate={formElement.config.validation}
                         invalid={!formElement.config.valid}
                     />
-                    <p className='auth__error-message'>{errorMessage === 'Email Exist' ? 'Username exist' : errorMessage}</p>
+                    <p className='auth__error-message'>{errorMessage}</p>
                 </Fragment>
             )
         })
@@ -141,4 +142,13 @@ const mapDispatchToProps = dispatch => {
         onAuthSwitchMode: (isSignUp) => dispatch(actions.switchAuthMode(isSignUp)).errorMessage
     }
 }
+
+Auth.propTypes = {
+    isSignUp: PropTypes.bool,
+    errorMessage: PropTypes.string,
+    token: PropTypes.string,
+    onAuth: PropTypes.func,
+    onAuthSwitchMode: PropTypes.func
+}
+
 export default connect(mapStateToProps, mapDispatchToProps)(Auth)

@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import './Task.scss'
-import Line from '../../sharedComponent/Line/Line'
+import Line from '../../sharedComponents/Line/Line'
 import DoneExitBtns from '../Buttons/DoneExitBtns'
 import EditBtnInput from '../Buttons/EditBtnInput'
 import * as actions from '../../store/actions/index'
@@ -73,7 +74,7 @@ const Task = ({ data, onFinishOrDeleteTask, onPutTaskUpdate, token, userId }) =>
                                     xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100"
                                     style={{ enableBackground: "new 0 0 100 100" }} xmlSpace="preserve">
                                     <polyline className="task__checkbox_line" points="3.5,45.5 40.5,82.5 95.7,15.3 "
-                                        strokeLinecap="round" onAnimationEnd={finishOrDeleteTask} /></svg>
+                                        strokeLinecap="round" onAnimationStart={finishOrDeleteTask} /></svg>
                             </label>
 
                             <span className="task__name" ref={spanRef}>{initialValue}</span>
@@ -96,7 +97,6 @@ const Task = ({ data, onFinishOrDeleteTask, onPutTaskUpdate, token, userId }) =>
 
 const mapStateToProps = state => {
     return {
-        tasks: state.todo.tasks,
         token: state.auth.token,
         userId: state.auth.userId
     }
@@ -109,4 +109,12 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
+
+Task.propTypes = {
+    data: PropTypes.object,
+    onFinishOrDeleteTask: PropTypes.func,
+    onPutTaskUpdate: PropTypes.func,
+    token: PropTypes.string,
+    userId: PropTypes.string,
+}
 export default connect(mapStateToProps, mapDispatchToProps)(Task)

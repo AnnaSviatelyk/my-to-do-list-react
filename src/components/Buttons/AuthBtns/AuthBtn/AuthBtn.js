@@ -1,8 +1,9 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './AuthBtn.scss'
 
 
-const authBtn = ({ children, type, click, disabled }) => {
+const AuthBtn = ({ children, type, click, disabled }) => {
     let className = null
     if (type === 'with-background') { className = 'authBtn' }
     if (type === 'with-border') { className = 'authBtn authBtn--with-border' }
@@ -15,5 +16,10 @@ const authBtn = ({ children, type, click, disabled }) => {
 
 }
 
+AuthBtn.propTypes = {
+    type: PropTypes.string,
+    click: PropTypes.func,
+    disabled: PropTypes.bool
+}
 
-export default authBtn
+export default AuthBtn

@@ -1,6 +1,6 @@
 export {
     authBtnClick,
-    closeForm,
+    backDropClick,
     switchAuthMode,
     auth,
     authCheckState,

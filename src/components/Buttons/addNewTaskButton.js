@@ -1,13 +1,17 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './addNewTaskButton.scss'
 
-const addTaskBtn = (props) => {
+const AddTaskBtn = ({ click, children }) => {
     return (
-        <div className="new-item" onClick={props.click}>
+        <div className="new-item" onClick={click}>
             <i className="new-item__plus-icon"></i>
-            <span className="new-item__label">{props.children}</span>
+            <span className="new-item__label">{children}</span>
         </div>
     )
 }
 
-export default addTaskBtn
+AddTaskBtn.propTypes = {
+    click: PropTypes.func
+}
+export default AddTaskBtn

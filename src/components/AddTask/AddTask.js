@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './AddTask.scss'
 
 
@@ -32,4 +33,10 @@ const AddTask = ({ value, cancelClick, onChange, onAdd }) => {
     )
 }
 
+AddTask.propTypes = {
+    value: PropTypes.string,
+    cancelClick: PropTypes.func,
+    onChange: PropTypes.func,
+    onAdd: PropTypes.func
+}
 export default AddTask

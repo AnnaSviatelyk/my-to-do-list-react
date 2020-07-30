@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import '../Tasks/Task.scss'
 
 
@@ -10,6 +11,11 @@ const DoneExitBtns = ({ update, cancel }) => {
         </div>
     )
 
+}
+
+DoneExitBtns.propTypes = {
+    update: PropTypes.func,
+    cancel: PropTypes.func
 }
 
 export default DoneExitBtns

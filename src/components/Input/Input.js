@@ -1,7 +1,8 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './Input.scss'
 
-const input = ({ elementConfig, invalid, shouldValidate, touched, value, changed, label }) => {
+const Input = ({ elementConfig, invalid, shouldValidate, touched, value, changed, label }) => {
     const inputClasses = ['input']
 
     if (invalid && shouldValidate && touched) {
@@ -9,6 +10,7 @@ const input = ({ elementConfig, invalid, shouldValidate, touched, value, changed
     }
 
     let inputElement = <input
+        autoComplete="off"
         className={inputClasses.join(' ')}
         {...elementConfig}
         value={value}
@@ -24,5 +26,14 @@ const input = ({ elementConfig, invalid, shouldValidate, touched, value, changed
     )
 }
 
+Input.propTypes = {
+    elementConfig: PropTypes.object,
+    invalid: PropTypes.bool,
+    shouldValidate: PropTypes.object,
+    touched: PropTypes.bool,
+    value: PropTypes.string,
+    changed: PropTypes.func,
+    label: PropTypes.string
+}
 
-export default input
+export default Input

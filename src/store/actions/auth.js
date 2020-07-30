@@ -32,11 +32,9 @@ export const authFail = (error) => {
     }
 }
 
-export const closeForm = () => {
+export const backDropClick = () => {
     return {
-        type: actionTypes.CLOSE_FORM,
-        isFormShown: false,
-        error: null
+        type: actionTypes.BACKDROP_CLICK,
     }
 }
 
@@ -67,35 +65,33 @@ export const logout = () => {
 
 
 export const auth = (username, password, isSignUp) => {
-    return dispatch => {
-        dispatch(authStart())
+    return async dispatch => {
+        try {
+            dispatch(authStart())
+            const authData = {
+                username: username,
+                email: `${username}@todo.list`,
+                password: password,
+                returnSecureToken: true
+            }
+            const baseUrl = 'https://identitytoolkit.googleapis.com/v1/accounts:'
+            let url = `${baseUrl}signUp?key=AIzaSyBTkC5sKi6tMveqTPRvodHeA42E495rGng`
 
-        const authData = {
-            username: username,
-            email: `${username}@todo.list`,
-            password: password,
-            returnSecureToken: true
+            if (!isSignUp) {
+                url = `${baseUrl}signInWithPassword?key=AIzaSyBTkC5sKi6tMveqTPRvodHeA42E495rGng`
+            }
+
+            const res = await axios.post(url, authData)
+            const expirationDate = new Date(new Date().getTime() + res.data.expiresIn * 1000)
+            localStorage.setItem('token', res.data.idToken)
+            localStorage.setItem('expirationDate', expirationDate)
+            localStorage.setItem('userId', res.data.localId)
+            dispatch(authSuccess(res.data.idToken, res.data.localId))
+
+        } catch (error) {
+            const errorMessage = error.response.data.error.message.toLowerCase().split('_').join(' ').replace(/email/i, 'username')
+            dispatch(authFail(errorMessage))
         }
-
-        let url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBTkC5sKi6tMveqTPRvodHeA42E495rGng'
-
-        if (!isSignUp) {
-            url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBTkC5sKi6tMveqTPRvodHeA42E495rGng'
-        }
-
-        axios.post(url, authData)
-            .then(response => {
-                const expirationDate = new Date(new Date().getTime() + response.data.expiresIn * 1000)
-                localStorage.setItem('token', response.data.idToken)
-                localStorage.setItem('expirationDate', expirationDate)
-                localStorage.setItem('userId', response.data.localId)
-                dispatch(authSuccess(response.data.idToken, response.data.localId))
-            })
-            .catch(error => {
-                const errorMessage = error.response.data.error.message.toLowerCase().split('_').join(' ')
-
-                dispatch(authFail(errorMessage))
-            })
     }
 }
 

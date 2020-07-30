@@ -54,12 +54,14 @@ const authBtnClick = (state, action) => {
     })
 }
 
-const closeForm = (state, action) => {
+const backDropClick = (state) => {
     return updateObj(state, {
-        isFormShown: action.isFormShown,
-        error: action.error
+        isFormShown: false,
+        error: null
     })
 }
+
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.AUTH_START: return authStart(state)
@@ -68,7 +70,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.SWITCH_AUTH_MODE: return switchAuthMode(state, action)
         case actionTypes.AUTH_LOGOUT: return authLogout(state, action)
         case actionTypes.AUTH_BTN_CLICK: return authBtnClick(state, action)
-        case actionTypes.CLOSE_FORM: return closeForm(state, action)
+        case actionTypes.BACKDROP_CLICK: return backDropClick(state, action)
         default: return state
 
     }

@@ -1,7 +1,7 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './Tasks.scss'
 import Task from './Task'
-import './Task.scss'
 import {
     CSSTransition,
     TransitionGroup,
@@ -10,16 +10,16 @@ import {
 
 
 const Tasks = ({ tasks }) => {
-
     return (
         <TransitionGroup className="tasks-container">
             {
                 tasks.map(el => {
                     return (
                         <CSSTransition
-                            key={el.id}
+                            key={el.key}
                             timeout={300}
                             classNames="task"
+                            unmountOnExit
                         >
                             <Task data={el} />
                         </CSSTransition>
@@ -29,7 +29,10 @@ const Tasks = ({ tasks }) => {
 
         </TransitionGroup>
     )
+}
 
+Tasks.propTypes = {
+    tasks: PropTypes.array
 }
 
 export default Tasks

@@ -1,18 +1,20 @@
 .header {
     margin: 40px 175px 24px 175px;
+
     display: flex;
     align-items: center;
     justify-content: flex-start;
 
     &__date-and-time {
-        margin-left: 39%;
-        margin-right: 5%;
+        margin-left: 42%;
+        margin-right: 2%;
     }
 
     &__data-label {
+        margin-right: 8px;
+
         font-family: "Kalam", monospace;
         font-size: 18px;
-        margin-right: 8px;
         color: #333333;
 
         vertical-align: middle;

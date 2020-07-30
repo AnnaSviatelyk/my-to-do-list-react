@@ -1,9 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import * as actions from '../../store/actions/index'
 import './Header.scss'
 import { getCurrentTime } from '../../helpers/helpers'
-import Line from '../../sharedComponent/Line/Line'
+import Line from '../../sharedComponents/Line/Line'
 import Logo from '../Logo/Logo'
 import { NavLink } from 'react-router-dom'
 import AuthBtn from '../Buttons/AuthBtns/AuthBtn/AuthBtn'
@@ -34,6 +35,10 @@ const mapDispatchToProps = dispatch => {
     return {
         onLogout: () => dispatch(actions.logout())
     }
+}
+
+Header.propTypes = {
+    onLogout: PropTypes.func
 }
 
 export default connect(null, mapDispatchToProps)(Header)

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react'
+import PropTypes from 'prop-types'
 import '../Tasks/Task.scss'
 
 const maxTextAreaHeight = 100
@@ -46,5 +47,11 @@ const InputAndBtns = ({ value, spanHeight, change, closeTextArea }) => {
 
 }
 
+InputAndBtns.propTypes = {
+    value: PropTypes.string,
+    spanHeight: PropTypes.number,
+    change: PropTypes.func,
+    closeTextArea: PropTypes.func
+}
 
 export default InputAndBtns

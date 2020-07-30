@@ -2,5 +2,15 @@
     position: fixed;
     bottom: 0;
     right: 71px;
+
     pointer-events: none;
+}
+
+.to-do-list {
+    &__error-message {
+        padding: 24px 0 24px 0;
+
+        font-size: 14px;
+        text-transform: uppercase;
+    }
 }

@@ -15,12 +15,10 @@ class App extends Component {
   render() {
 
     let routes = (<Switch>
-      <Route path='/' component={Main} />
-      {this.props.isAuth ? <Redirect from='/' to='/to-do-list' /> : <Redirect to='/' />}
+      <Route path='/' exact component={Main} />
+      <Redirect to='/' />
     </Switch>
     )
-
-
 
     if (this.props.isAuth) {
       routes = (
@@ -44,7 +42,6 @@ const mapStateToProps = state => {
   return {
     isAuth: state.auth.token !== null
   }
-
 }
 
 const mapDispatchToProps = dispatch => {
