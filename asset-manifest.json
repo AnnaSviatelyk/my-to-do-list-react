@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/my-to-do-list-react/static/css/main.591d7f35.chunk.css",
-    "main.js": "/my-to-do-list-react/static/js/main.5eca74ad.chunk.js",
-    "main.js.map": "/my-to-do-list-react/static/js/main.5eca74ad.chunk.js.map",
+    "main.css": "/my-to-do-list-react/static/css/main.91d37150.chunk.css",
+    "main.js": "/my-to-do-list-react/static/js/main.0b416983.chunk.js",
+    "main.js.map": "/my-to-do-list-react/static/js/main.0b416983.chunk.js.map",
     "runtime-main.js": "/my-to-do-list-react/static/js/runtime-main.545ebdef.js",
     "runtime-main.js.map": "/my-to-do-list-react/static/js/runtime-main.545ebdef.js.map",
-    "static/js/2.8f5f2ebb.chunk.js": "/my-to-do-list-react/static/js/2.8f5f2ebb.chunk.js",
-    "static/js/2.8f5f2ebb.chunk.js.map": "/my-to-do-list-react/static/js/2.8f5f2ebb.chunk.js.map",
+    "static/js/2.9c85a8a3.chunk.js": "/my-to-do-list-react/static/js/2.9c85a8a3.chunk.js",
+    "static/js/2.9c85a8a3.chunk.js.map": "/my-to-do-list-react/static/js/2.9c85a8a3.chunk.js.map",
     "index.html": "/my-to-do-list-react/index.html",
-    "precache-manifest.cdd345380533183f63882f6969f63e83.js": "/my-to-do-list-react/precache-manifest.cdd345380533183f63882f6969f63e83.js",
+    "precache-manifest.cfcc90e353470bd52d1e7d0db76f69e2.js": "/my-to-do-list-react/precache-manifest.cfcc90e353470bd52d1e7d0db76f69e2.js",
     "service-worker.js": "/my-to-do-list-react/service-worker.js",
-    "static/css/main.591d7f35.chunk.css.map": "/my-to-do-list-react/static/css/main.591d7f35.chunk.css.map",
-    "static/js/2.8f5f2ebb.chunk.js.LICENSE.txt": "/my-to-do-list-react/static/js/2.8f5f2ebb.chunk.js.LICENSE.txt",
+    "static/css/main.91d37150.chunk.css.map": "/my-to-do-list-react/static/css/main.91d37150.chunk.css.map",
+    "static/js/2.9c85a8a3.chunk.js.LICENSE.txt": "/my-to-do-list-react/static/js/2.9c85a8a3.chunk.js.LICENSE.txt",
     "static/media/Task.scss": "/my-to-do-list-react/static/media/trash.55c4bcca.svg",
     "static/media/illustration.svg": "/my-to-do-list-react/static/media/illustration.bfcc6550.svg",
     "static/media/Main.scss": "/my-to-do-list-react/static/media/main-page-illustration.b24b74f3.svg",
@@ -19,8 +19,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.545ebdef.js",
-    "static/js/2.8f5f2ebb.chunk.js",
-    "static/css/main.591d7f35.chunk.css",
-    "static/js/main.5eca74ad.chunk.js"
+    "static/js/2.9c85a8a3.chunk.js",
+    "static/css/main.91d37150.chunk.css",
+    "static/js/main.0b416983.chunk.js"
   ]
 }
