@@ -39,10 +39,11 @@ const switchAuthMode = (state, action) => {
     return updateObj(state, { isSignUp: action.isSignUp })
 }
 
-const authLogout = (state) => {
+const authLogout = (state, action) => {
     return updateObj(state, {
         token: null,
-        userId: null
+        userId: null,
+        error: null
     })
 }
 
@@ -65,7 +66,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.AUTH_SUCCESS: return authSuccess(state, action)
         case actionTypes.AUTH_FAIL: return authFail(state, action)
         case actionTypes.SWITCH_AUTH_MODE: return switchAuthMode(state, action)
-        case actionTypes.AUTH_LOGOUT: return authLogout(state)
+        case actionTypes.AUTH_LOGOUT: return authLogout(state, action)
         case actionTypes.AUTH_BTN_CLICK: return authBtnClick(state, action)
         case actionTypes.CLOSE_FORM: return closeForm(state, action)
         default: return state

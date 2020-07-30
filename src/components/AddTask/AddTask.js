@@ -1,6 +1,7 @@
 import React from 'react'
 import './AddTask.scss'
 
+
 const AddTask = ({ value, cancelClick, onChange, onAdd }) => {
     const keyPressHandler = (event) => {
         if (event.keyCode === 13) {

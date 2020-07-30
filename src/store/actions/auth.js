@@ -76,7 +76,6 @@ export const auth = (username, password, isSignUp) => {
             password: password,
             returnSecureToken: true
         }
-        console.log(authData.username)
 
         let url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBTkC5sKi6tMveqTPRvodHeA42E495rGng'
 

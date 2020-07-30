@@ -3,7 +3,8 @@ export {
     closeForm,
     switchAuthMode,
     auth,
-    authCheckState
+    authCheckState,
+    logout
 } from './auth'
 
 export {

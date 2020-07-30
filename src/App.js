@@ -3,6 +3,7 @@ import { Route, Switch, withRouter, Redirect } from 'react-router-dom'
 import './App.css';
 import ToDoList from './containers/ToDoList/ToDoList'
 import Main from './containers/Main/Main'
+import Logout from './containers/Auth/Logout/Logout'
 import { connect } from 'react-redux'
 import * as actions from './store/actions/index'
 
@@ -25,7 +26,7 @@ class App extends Component {
       routes = (
         <Switch>
           <Route path='/to-do-list' component={ToDoList} />
-          {/* <Route path='/logout' component={Logout} /> */}
+          <Route path='/logout' component={Logout} />
           <Redirect to='/to-do-list' />
         </Switch>
       )

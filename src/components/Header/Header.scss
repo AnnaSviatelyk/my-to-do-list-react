@@ -2,7 +2,12 @@
     margin: 40px 175px 24px 175px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
+
+    &__date-and-time {
+        margin-left: 39%;
+        margin-right: 5%;
+    }
 
     &__data-label {
         font-family: "Kalam", monospace;

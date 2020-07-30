@@ -18,8 +18,6 @@ const Task = ({ data, onFinishOrDeleteTask, onPutTaskUpdate, token, userId }) =>
         userId: userId
     }
 
-    console.log(data)
-
     const documentClickHandler = (event) => {
         const ignoringElements = ['task__edit-input-text', 'task__btn-done', 'task__btn-exit-edit']
         const className = event.target.classList[0]

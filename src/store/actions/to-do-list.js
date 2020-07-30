@@ -116,16 +116,17 @@ export const deleteOrFinishTaskFail = () => {
 }
 
 export const deleteTask = (token, taskId, userId) => {
-    return dispatch => {
-        const queryParams = '?auth=' + token
-        axios.delete('https://my-to-do-list-on-react.firebaseio.com/tasks/' + userId + '/' + taskId + '.json' + queryParams)
-            .then(res => {
-                dispatch(deleteOrFinishTaskSuccess(taskId))
-            })
-            .catch(error => {
-                const errorMessage = error.response.data.error.message.toLowerCase().split('_').join(' ')
-                dispatch(deleteOrFinishTaskFail(errorMessage))
-            })
+    return async dispatch => {
+        try {
+            const queryParams = '?auth=' + token
+            await axios.delete('https://my-to-do-list-on-react.firebaseio.com/tasks/' + userId + '/' + taskId + '.json' + queryParams)
+            dispatch(deleteOrFinishTaskSuccess(taskId))
+
+        } catch (error) {
+            const errorMessage = error.response.data.error.message.toLowerCase().split('_').join(' ')
+            dispatch(deleteOrFinishTaskFail(errorMessage))
+
+        }
     }
 }
 
