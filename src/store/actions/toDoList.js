@@ -1,6 +1,8 @@
 import * as actionTypes from './actionTypes'
 import axios from 'axios'
 
+const baseUrl = 'https://my-to-do-list-on-react.firebaseio.com/tasks/'
+
 //FETCH
 export const fetchTasksSuccess = (tasks) => {
     return {
@@ -20,7 +22,7 @@ export const fetchTasks = (token, userId) => {
     return async dispatch => {
         try {
             const queryParams = '?auth=' + token
-            const res = await axios.get('https://my-to-do-list-on-react.firebaseio.com/tasks/' + userId + '.json' + queryParams)
+            const res = await axios.get(`${baseUrl}${userId}.json${queryParams}`)
             const fetchedTasks = []
             for (let key in res.data) {
                 fetchedTasks.push({
@@ -63,7 +65,7 @@ export const postTask = (token, task) => {
     return async dispatch => {
         try {
             dispatch(postTaskSuccess({ ...task, id: null }))
-            const res = await axios.post('https://my-to-do-list-on-react.firebaseio.com/tasks/' + task.userId + '.json?auth=' + token, { ...task })
+            const res = await axios.post(`${baseUrl}${task.userId}.json?auth=${token}`, { ...task })
             const id = res.data.name
             dispatch(updateTaskWithRealId(task.key, id))
         } catch (error) {
@@ -93,7 +95,7 @@ export const putTask = (token, task, taskId, userId) => {
     return async dispatch => {
         try {
             const queryParams = '?auth=' + token
-            axios.put('https://my-to-do-list-on-react.firebaseio.com/tasks/' + userId + '/' + taskId + '.json' + queryParams, { ...task, description: task.description })
+            axios.put(`${baseUrl}${userId}/${taskId}.json${queryParams}`, { ...task, description: task.description })
             dispatch(putTaskSuccess(task.description, taskId))
         } catch (error) {
             dispatch(putTaskFail(error.message))
@@ -121,7 +123,7 @@ export const deleteTask = (token, taskId, userId) => {
         try {
             const queryParams = '?auth=' + token
             dispatch(deleteOrFinishTaskSuccess(taskId))
-            await axios.delete('https://my-to-do-list-on-react.firebaseio.com/tasks/' + userId + '/' + taskId + '.json' + queryParams)
+            await axios.delete(`${baseUrl}${userId}/${taskId}.json${queryParams}`)
         } catch (error) {
             const errorMessage = error.message.toLowerCase().split('_').join(' ')
             dispatch(deleteOrFinishTaskFail(errorMessage))

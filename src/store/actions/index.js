@@ -12,4 +12,4 @@ export {
     fetchTasks,
     putTask,
     deleteTask
-} from './to-do-list'
+} from './toDoList'

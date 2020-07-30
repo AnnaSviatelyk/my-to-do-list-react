@@ -5,10 +5,10 @@ import './AuthBtn.scss'
 
 const AuthBtn = ({ children, type, click, disabled }) => {
     let className = null
-    if (type === 'with-background') { className = 'authBtn' }
-    if (type === 'with-border') { className = 'authBtn authBtn--with-border' }
-    if (type === 'text-btn') { className = 'authBtn authBtn--text' }
-    if (type === 'with-background-wide') { className = 'authBtn authBtn--wide' }
+    if (type === 'full') { className = 'authBtn' }
+    if (type === 'border') { className = 'authBtn authBtn--with-border' }
+    if (type === 'secondary') { className = 'authBtn authBtn--text' }
+    if (type === 'block') { className = 'authBtn authBtn--wide' }
 
     return (
         <button className={className} onClick={click} disabled={disabled}>{children}</button>
@@ -17,7 +17,7 @@ const AuthBtn = ({ children, type, click, disabled }) => {
 }
 
 AuthBtn.propTypes = {
-    type: PropTypes.string,
+    type: PropTypes.oneOf(['full', 'border', 'secondary', 'block']),
     click: PropTypes.func,
     disabled: PropTypes.bool
 }

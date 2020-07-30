@@ -7,7 +7,7 @@ const ErrorMessage = ({ errorMessage, click }) => (
     <div className='error'>
         <span className='error__label'>Error!</span>
         <p className='error__message'>{errorMessage}</p>
-        <AuthBtn type='with-background' click={click}>Ok</AuthBtn>
+        <AuthBtn type='full' click={click}>Ok</AuthBtn>
     </div>
 
 )

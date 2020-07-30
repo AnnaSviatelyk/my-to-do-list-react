@@ -119,10 +119,10 @@ class Auth extends Component {
                 <form onSubmit={this.submitHandler}>
                     {form}
                     <p className='auth__error-message auth__error-message--capitalize'>{this.state.errorMessage}</p>
-                    <AuthBtn type='with-background-wide' disabled={this.state.controls.userName.valid && this.state.controls.password.valid ? false : true}>Submit</AuthBtn>
+                    <AuthBtn type='block' disabled={this.state.controls.userName.valid && this.state.controls.password.valid ? false : true}>Submit</AuthBtn>
                 </form>
                 <p className='toSignIn'>{this.props.isSignUp ? 'Already have an account?' : `Don't have an account?`}</p>
-                <AuthBtn type='text-btn' click={this.switchAuthModeHandler}>{this.props.isSignUp ? 'Sign in' : 'Sign up'}</AuthBtn>
+                <AuthBtn type='secondary' click={this.switchAuthModeHandler}>{this.props.isSignUp ? 'Sign in' : 'Sign up'}</AuthBtn>
             </div >
         )
     }
