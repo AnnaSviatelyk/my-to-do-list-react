@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import '../Tasks/Task.scss'
+import '../../Tasks/Task.scss'
 
 
 const DoneExitBtns = ({ update, cancel }) => {

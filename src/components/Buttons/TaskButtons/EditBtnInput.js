@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
-import '../Tasks/Task.scss'
+import '../../Tasks/Task.scss'
 
 const maxTextAreaHeight = 100
 const spanHeightWithOneLine = 37

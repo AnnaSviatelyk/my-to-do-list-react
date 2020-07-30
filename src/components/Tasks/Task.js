@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import './Task.scss'
 import Line from '../../sharedComponents/Line/Line'
-import DoneExitBtns from '../Buttons/DoneExitBtns'
-import EditBtnInput from '../Buttons/EditBtnInput'
+import DoneExitBtns from '../Buttons/TaskButtons/DoneExitBtns'
+import EditBtnInput from '../Buttons/TaskButtons/EditBtnInput'
 import * as actions from '../../store/actions/index'
 
 

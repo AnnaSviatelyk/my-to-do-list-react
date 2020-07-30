@@ -12,7 +12,6 @@ import AuthBtn from '../Buttons/AuthBtns/AuthBtn/AuthBtn'
 
 const { day, month, year, hours, minutes } = getCurrentTime();
 
-
 const Header = ({ onLogout }) => {
     return (
         <>

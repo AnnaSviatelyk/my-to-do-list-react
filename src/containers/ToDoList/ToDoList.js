@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import './ToDoList.scss';
 import Header from '../../components/Header/Header'
 import illustration from '../../assets/illustration.svg'
-import AddTaskBtn from '../../components/Buttons/addNewTaskButton'
+import AddTaskBtn from '../../components/Buttons/TaskButtons/addNewTaskButton'
 import Tasks from '../../components/Tasks/Tasks'
 import AddTask from '../../components/AddTask/AddTask'
 import * as actions from '../../store/actions/index'
