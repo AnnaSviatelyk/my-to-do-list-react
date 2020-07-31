@@ -90,34 +90,6 @@
         word-wrap: break-word;
     }
 
-    &__edit-input-text {
-        width: 480px;
-        height: auto;
-        padding: 8px 12px 8px 8px;
-        box-sizing: border-box;
-        background-color: #f3f3f340;
-
-        display: block;
-        overflow-x: hidden;
-        overflow-y: scroll;
-
-        font-family: "Montserrat", sans-serif;
-        font-size: 14px;
-        line-height: 1.5;
-
-        border-radius: 3px;
-        border: 1px solid #f3f3f3;
-
-        outline: none;
-        resize: none;
-
-        transition: border 0.3s;
-
-        &--invalid {
-            border: 1px solid #f15e50;
-        }
-    }
-
     &__btns {
         display: flex;
         align-items: center;

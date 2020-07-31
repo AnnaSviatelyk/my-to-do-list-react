@@ -23,7 +23,7 @@ const Header = ({ onLogout }) => {
                     <span className="header__data-label">Time</span>
                     <span className="header__data header__data--time">{hours}:{minutes}</span>
                 </div>
-                <NavLink to={'/logout'}><AuthBtn type='full' onClick={onLogout}>Logout</AuthBtn></NavLink>
+                <NavLink to={'/logout'}><AuthBtn onClick={onLogout}>Logout</AuthBtn></NavLink>
             </header>
             <Line />
         </>

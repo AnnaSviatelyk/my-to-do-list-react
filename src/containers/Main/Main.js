@@ -16,25 +16,19 @@ class Main extends Component {
         if (this.props.token) {
             this.props.history.push('/to-do-list')
         }
-        let form = null
 
-        if (this.props.isFormShown) {
-            form = (
+        return (
+            <div className='main'>
                 <Modal show={this.props.isFormShown} backDropClick={this.props.onBackdropClick}>
                     {this.props.loading ? <Spinner /> : <Auth isSignUp={this.props.isSignUp} />}
                 </Modal>
-            )
-        }
-        return (
-            <div className='Main'>
-                {form}
-                <div className='Main__header'>
+                <div className='main__header'>
                     <Logo />
                 </div>
-                <h1 className='Main__heading'>All your tasks <br /> managed in one place</h1>
-                <p className='Main__sub-heading'>My To-Do List is a useful tool for everyone, <br /> who wants to keep their everyday routine under control.</p>
+                <h1 className='main__heading'>All your tasks <br /> managed in one place</h1>
+                <p className='main__sub-heading'>My To-Do List is a useful tool for everyone, <br /> who wants to keep their everyday routine under control.</p>
                 <AuthBtns click={this.props.onAuthBtnClick} />
-                <div className="Main__illustration-container" />
+                <div className="main__illustration-container" />
             </div >
         )
     }

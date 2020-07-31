@@ -11,7 +11,6 @@ export function makeid(length = 5) {
 
 
 export function getCurrentTime() {
-
     const now = new Date()
     const day = now.getDate()
 

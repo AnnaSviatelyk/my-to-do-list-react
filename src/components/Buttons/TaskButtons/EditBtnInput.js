@@ -1,13 +1,13 @@
 import React, { useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
-import '../../Tasks/Task.scss'
+import './EditBtnInput.scss'
 
 const maxTextAreaHeight = 100
 const spanHeightWithOneLine = 37
 
 const InputAndBtns = ({ value, spanHeight, change, closeTextArea }) => {
     const textAreaRef = useRef(null)
-    let className = value ? '' : 'task__edit-input-text--invalid'
+    let className = value ? '' : 'input__edit-input-text--invalid'
 
     useEffect(() => {
         let nextHeight = Math.min(maxTextAreaHeight, spanHeight)
@@ -26,7 +26,8 @@ const InputAndBtns = ({ value, spanHeight, change, closeTextArea }) => {
     }, [value, spanHeight])
 
     const keyPressHandler = (event) => {
-        if (event.keyCode === 13) {
+        const isEnter = event.keyCode === 13
+        if (isEnter) {
             event.preventDefault();
             if (event.target.value.length > 0) {
                 closeTextArea()
@@ -36,7 +37,7 @@ const InputAndBtns = ({ value, spanHeight, change, closeTextArea }) => {
 
     return (
         <textarea
-            className={`task__edit-input-text ${className}`}
+            className={`input__edit-input-text ${className}`}
             type="text"
             autoFocus
             ref={textAreaRef}

@@ -20,7 +20,7 @@ const Task = ({ data, onFinishOrDeleteTask, onPutTaskUpdate, token, userId }) =>
     }
 
     const documentClickHandler = (event) => {
-        const ignoringElements = ['task__edit-input-text', 'task__btn-done', 'task__btn-exit-edit']
+        const ignoringElements = ['input__edit-input-text', 'task__btn-done', 'task__btn-exit-edit']
         const className = event.target.classList[0]
         if (!ignoringElements.includes(className)) { closeEditTextArea() }
     }

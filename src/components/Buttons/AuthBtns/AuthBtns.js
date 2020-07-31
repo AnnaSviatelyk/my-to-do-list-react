@@ -5,7 +5,7 @@ import AuthBtn from './AuthBtn/AuthBtn'
 const AuthBtns = ({ click }) => (
     <div className='authBtns-container'>
         <AuthBtn type='border' click={() => click(false, true)}>Login</AuthBtn>
-        <AuthBtn type='full' click={() => click(true, true)}>Register</AuthBtn>
+        <AuthBtn click={() => click(true, true)}>Register</AuthBtn>
     </div>
 )
 

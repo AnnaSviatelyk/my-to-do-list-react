@@ -1,13 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import '../../Tasks/Task.scss'
+import './DoneExitBtns.scss'
 
 
 const DoneExitBtns = ({ update, cancel }) => {
     return (
-        <div className="task__btns">
-            <i className="task__btn-done" onClick={update}></i>
-            <i className="task__btn-exit-edit" onClick={cancel}></i>
+        <div className="done-exit-btns">
+            <i className="done-exit-btns__btn-done" onClick={update}></i>
+            <i className="done-exit-btns__btn-exit-edit" onClick={cancel}></i>
         </div>
     )
 
