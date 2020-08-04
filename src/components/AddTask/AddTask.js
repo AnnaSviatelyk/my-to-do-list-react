@@ -39,4 +39,4 @@ AddTask.propTypes = {
     onChange: PropTypes.func,
     onAdd: PropTypes.func
 }
-export default AddTask
+export default AddTask 
