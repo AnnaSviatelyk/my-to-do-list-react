@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/my-to-do-list-react/static/css/main.5b5364ff.chunk.css",
+    "main.css": "/my-to-do-list-react/static/css/main.232d757a.chunk.css",
     "main.js": "/my-to-do-list-react/static/js/main.a9ef78ba.chunk.js",
     "main.js.map": "/my-to-do-list-react/static/js/main.a9ef78ba.chunk.js.map",
     "runtime-main.js": "/my-to-do-list-react/static/js/runtime-main.545ebdef.js",
@@ -8,9 +8,9 @@
     "static/js/2.06e4b28c.chunk.js": "/my-to-do-list-react/static/js/2.06e4b28c.chunk.js",
     "static/js/2.06e4b28c.chunk.js.map": "/my-to-do-list-react/static/js/2.06e4b28c.chunk.js.map",
     "index.html": "/my-to-do-list-react/index.html",
-    "precache-manifest.ca429bd5d43381004074578ed42a862f.js": "/my-to-do-list-react/precache-manifest.ca429bd5d43381004074578ed42a862f.js",
+    "precache-manifest.7679a1124ffe995f0f697cb6a2960fe9.js": "/my-to-do-list-react/precache-manifest.7679a1124ffe995f0f697cb6a2960fe9.js",
     "service-worker.js": "/my-to-do-list-react/service-worker.js",
-    "static/css/main.5b5364ff.chunk.css.map": "/my-to-do-list-react/static/css/main.5b5364ff.chunk.css.map",
+    "static/css/main.232d757a.chunk.css.map": "/my-to-do-list-react/static/css/main.232d757a.chunk.css.map",
     "static/js/2.06e4b28c.chunk.js.LICENSE.txt": "/my-to-do-list-react/static/js/2.06e4b28c.chunk.js.LICENSE.txt",
     "static/media/DoneExitBtns.scss": "/my-to-do-list-react/static/media/done.f97a6fdb.svg",
     "static/media/Task.scss": "/my-to-do-list-react/static/media/trash.55c4bcca.svg",
@@ -21,7 +21,7 @@
   "entrypoints": [
     "static/js/runtime-main.545ebdef.js",
     "static/js/2.06e4b28c.chunk.js",
-    "static/css/main.5b5364ff.chunk.css",
+    "static/css/main.232d757a.chunk.css",
     "static/js/main.a9ef78ba.chunk.js"
   ]
 }
